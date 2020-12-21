@@ -18,6 +18,9 @@ Route::GET('/start', function () {
 });
 
 Route::get('/users', 'UserController@list')->name('get.users');
+Route::get('/users/{id}', 'ProfileController@show')->name('get.user.profile'); //->name('adres do blade(wodiku), jezeli ten istneje)
+
+Route::get('users/{id}/address', 'user\ShowAddress')->where(['id' => '[0-9]+'])->name('get.users.address');
 
 
 

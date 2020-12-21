@@ -8,6 +8,6 @@ class UserController extends Controller
 {
     public function list()
     {
-        dd('list action');
+        return view('user.list');
     }
 }
