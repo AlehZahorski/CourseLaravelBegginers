@@ -17,12 +17,19 @@ Route::GET('/start', function () {
     return view('welcome');
 });
 
-Route::get('/users', 'UserController@list')->name('get.users');
+Route::GET('/users', 'UserController@list')->name('get.users');
+Route::GET('/users/test/{id}', 'UserController@testShow')->name('get.users.test');
+Route::post('/users/test/post/{id}', 'UserController@testStore')->name('get.users.test.store');
+
+
+
+
+
 Route::get('/users/{id}', 'ProfileController@show')->name('get.user.profile'); //->name('adres do blade(wodiku), jezeli ten istneje)
 
-Route::get('users/{id}/address', 'user\ShowAddress')->where(['id' => '[0-9]+'])->name('get.users.address');
+Route::get('users/{id}/address', 'user\ShowAddress')->where(['id' => '[0-9]+'])->name('get.users.address'); // userController
 
-
+Route::resource('games', 'GameController');
 
 
 
@@ -66,3 +73,6 @@ Route::any('/all', function(){  //wszystkie mozliwe metody(post get put delete w
 });
 
 Route::view('/view/route', 'route.view'); // adres url - adres w folderach
+// Route::view('admin/view/route', 'route.view')->only([
+//     'create','update'
+// ]);
